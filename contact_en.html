@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KOOMAX - Contact Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #4CAF50;
+  --green-light: #d4f0d4;
+  --green-mid: #a8dfa8;
+  --green-dark: #2e7d32;
+  --green-bg: #d4f5e2;
+  --black: #111;
+  --dark: #1a1a1a;
+  --gray: #555;
+  --light-gray: #f5f5f5;
+  --white: #fff;
+  --font-en: 'Montserrat', sans-serif;
+  --font-cn: 'Noto Sans SC', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-cn); color: var(--black); background: var(--white); }
+
+/* ── NAV ── */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; height: 64px;
+  background: var(--white);
+  border-bottom: 1px solid #eee;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04);
+}
+.logo img { height: 32px; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--black); font-size: 14px;
+  font-weight: 500; transition: color .2s;
+}
+.nav-links a:hover { color: var(--green); }
+/* 调整语言按钮样式 */
+.nav-lang {
+  font-size: 13px; color: var(--gray);
+  border: 1px solid #ddd; padding: 4px 12px; border-radius: 20px;
+  transition: all .2s; text-decoration: none;
+  /* 桌面端显示，790px以下隐藏 */
+  display: inline-block;
+}
+.nav-lang:hover { border-color: var(--green); color: var(--green); }
+
+/* 汉堡按钮 */
+.hamburger {
+  display: none; flex-direction: column; gap: 4px; cursor: pointer; z-index: 101;
+}
+.hamburger span {
+  width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+.nav-lang:hover { border-color: var(--green); color: var(--green); }
+
+/* ── CONTACT HERO SPLIT ── */
+.contact-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 64px);
+}
+
+/* left image panel */ /*69f0ae*/
+.contact-left {
+  background: linear-gradient(135deg, #b9f6ca 0%, #69f0ae 40%, #b2dfdb 100%) no-repeat center center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+}
+
+.contact-left::before {
+  content: '';
+  position: absolute;
+  width: 100%; height: 100%;
+  background: rgba(212, 240, 212, 0.7); /* semi-transparent overlay to lighten the image */
+  top: 0; left: 0;
+  z-index: 1;
+}
+
+.contact-left-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--dark);
+  padding: 20px;
+}
+
+.contact-left-content h2 {
+  font-family: var(--font-en);
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--green-dark);
+}
+
+.contact-left-content p {
+  font-size: 16px;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+/* right form panel */
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 72px;
+}
+
+.section-label {
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 14px;
+}
+
+.contact-title {
+  font-family: var(--font-en);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.contact-subtitle {
+  font-size: 15px;
+  color: var(--gray);
+  margin-bottom: 36px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 480px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  background: var(--light-gray);
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: var(--font-cn);
+  font-size: 14px;
+  color: var(--dark);
+  outline: none;
+  transition: border-color .25s, background .25s, box-shadow .25s;
+  resize: none;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #aaa;
+  font-weight: 300;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--green);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(76,175,80,0.12);
+}
+
+.field textarea { min-height: 130px; line-height: 1.6; }
+
+.btn-send {
+  align-self: flex-start;
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  border-radius: 30px;
+  padding: 12px 32px;
+  font-family: var(--font-en);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .25s;
+  box-shadow: 0 4px 16px rgba(76,175,80,.35);
+}
+.btn-send:hover {
+  background: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76,175,80,.45);
+}
+.btn-send:active { transform: translateY(0); }
+
+/* toast */
+.toast {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: var(--green);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+  animation: slideIn .3s ease;
+}
+.toast.show { display: flex; }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── FOOTER (identical to index) ── */
+footer {
+  background: var(--dark); color: #ccc;
+  padding: 60px 60px 30px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px; margin-bottom: 50px;
+}
+.footer-logo {
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-logo img { height: 30px; width: auto; display: block; }
+.footer-tagline { font-size: 12px; color: #888; margin-top: 8px; text-align: center; }
+.footer-col h4 { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 18px; letter-spacing: .5px; font-family: var(--font-en); }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { text-decoration: none; color: #999; font-size: 13px; transition: color .2s; }
+.footer-col ul li a:hover { color: var(--green); }
+.footer-col .contact-item { font-size: 13px; color: #999; margin-bottom: 8px; }
+.footer-bottom {
+  border-top: 1px solid #333; padding-top: 24px;
+  font-size: 12px; color: #666; text-align: center;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 790px) {
+  .nav-links {
+    position: fixed; top: 0; right: 0; height: 100vh; width: 250px;
+    background: #fff; flex-direction: column; padding: 80px 30px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transform: translateX(100%); transition: 0.3s; z-index: 100;
+  }
+  .nav-links.active { transform: translateX(0); }
+  .hamburger { display: flex; }
+  .nav-lang-desktop { display: none; }
+  .nav-lang-mobile {
+    font-size: 13px; color: var(--gray);
+    border: 1px solid #ddd; padding: 4px 12px; border-radius: 20px;
+    transition: all .2s; text-decoration: none;
+    display: inline-block; margin-top: 20px;
+  }
+  .nav-lang-mobile:hover { border-color: var(--green); color: var(--green); }
+  .contact-hero { grid-template-columns: 1fr; }
+  .contact-left { min-height: 300px; padding: 40px; }
+  .contact-right { padding: 48px 32px; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { max-width: 100%; }
+  .contact-left-content h2 { font-size: 24px; }
+  .contact-left-content p { font-size: 14px; }
+}
+
+@media (min-width: 791px) {
+  .nav-lang-mobile { display: none; }
+}
+
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+  .footer-col ul { display: inline-block; text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <img src="KOOMAXLOGO.svg" alt="KOOMAX">
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index_cn.html">Home</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">Solutions</a></li>
+    <li><a href="#">News</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="contact_en.html" class="active">Contact us</a></li>
+    <li><a href="contact_cn.html" class="nav-lang-mobile">Chinese</a></li>
+  </ul>
+  <a href="contact_cn.html" class="nav-lang nav-lang-desktop">Chinese</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- CONTACT SPLIT -->
+<section class="contact-hero">
+
+  <!-- LEFT: image panel -->
+  <div class="contact-left">
+    <div class="contact-left-content">
+      <img src="contact.png" alt="contact" style="max-height:750px; max-width: 100%;">
+    </div>
+  </div>
+
+  <!-- RIGHT: form -->
+  <div class="contact-right">
+    <p class="section-label">Get in touch</p>
+    <h1 class="contact-title">Contact us</h1>
+    <p class="contact-subtitle">Send us a message and we'll get back to you shortly.</p>
+
+    <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="field">
+          <input type="text" placeholder="company name" id="company"/>
+        </div>
+        <div class="field">
+          <input type="tel" placeholder="phone number" id="phone"/>
+        </div>
+      </div>
+      <div class="field">
+        <input type="email" placeholder="e-mail" id="email"/>
+      </div>
+      <div class="field">
+        <textarea placeholder="message" id="message"></textarea>
+      </div>
+      <button type="submit" class="btn-send">send</button>
+      <div class="toast" id="toast">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="8" fill="rgba(255,255,255,.25)"/>
+          <path d="M5 8.5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Message sent! We'll be in touch soon.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="KOOMAXLOGO.svg" alt="KOOMAX">
+        <p class="footer-tagline">Power your mobile life！</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#">Primary battery</a></li>
+        <li><a href="#">Li-ion cylindrical battery</a></li>
+        <li><a href="#">Li-ion pouch cell</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">News&Insight</a></li>
+        <li><a href="#">Solutions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p class="contact-item">tech@koomax.com</p>
+      <p class="contact-item">+86-21-33688383</p>
+      <p class="contact-item">Shanghai, China</p>
+    </div>
+  </div>
+  <div class="footer-bottom">Copyright @2026 KOOMAX. All Rights Reserved.</div>
+</footer>
+
+<script>
+  // hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  // form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    document.getElementById('contactForm').reset();
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+</script>
+</body>
+</html>
